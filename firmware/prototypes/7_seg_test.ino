@@ -1,5 +1,5 @@
 /*
-Takudzwa Maseneke
+Takudzwa Masendeke
 
 This code is part of the hygiene-hero embedded systems project. 
 It is used to give the timer countdown for the recommended 20s 

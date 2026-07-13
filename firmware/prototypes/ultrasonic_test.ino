@@ -1,5 +1,5 @@
 /*
-Takudzwa Maseneke
+Takudzwa Masendeke
 
 This code is part of the hygiene-hero embedded systems project. 
 It is used to interface the HC-SR04 ultrasonic sensors to ensure 
