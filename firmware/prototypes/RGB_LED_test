@@ -1,0 +1,67 @@
+/*
+Takudzwa Masendeke
+
+This code is part of the hygiene-hero embedded systems project. 
+It is used to in extention with the light bar to create a visually 
+satisfying effect in when the user washes their hands for the whole 20s
+(It replaced the 20th LED)
+
+It makes use of linear interpolation to have a smooth transition between 
+colours
+*/
+
+const int RED_PIN = 8;
+const int GREEN_PIN = 9;
+const int BLUE_PIN = 10;
+
+int curR = 0, curG = 0, curB = 0;
+
+void setup() {
+  pinMode(RED_PIN, OUTPUT);
+  pinMode(GREEN_PIN, OUTPUT);
+  pinMode(BLUE_PIN, OUTPUT);
+
+  // green for 1 second (20th second)
+  crossFade(0, 255, 0, 50); 
+  delay(1000);
+}
+
+void loop() {
+  int nextR, nextG, nextB;
+
+  int skipChannel = random(0, 3); // remove 1 colour to prevent having a white colour
+
+  if (skipChannel == 0) { 
+    nextR = 0; // no red
+    nextG = random(50, 256);
+    nextB = random(50, 256);
+  } else if (skipChannel == 1) { 
+    nextR = random(50, 256);
+    nextG = 0; // no green 
+    nextB = random(50, 256);
+  } else {
+    nextR = random(50, 256);
+    nextG = random(50, 256);
+    nextB = 0; // no blue
+  }
+
+  crossFade(nextR, nextG, nextB, 30); 
+}
+
+void crossFade(int targetR, int targetG, int targetB, int steps) {
+    // using LERP to get to the next value smooth
+  for (int i = 0; i <= steps; i++) {
+    int r = curR + (targetR - curR) * i / steps;
+    int g = curG + (targetG - curG) * i / steps;
+    int b = curB + (targetB - curB) * i / steps;
+
+    analogWrite(RED_PIN, r);
+    analogWrite(GREEN_PIN, g);
+    analogWrite(BLUE_PIN, b);
+    
+    delay(5); // short delay for quick wave transition 
+  }
+  curR = targetR;
+  curG = targetG;
+  curB = targetB;
+}
