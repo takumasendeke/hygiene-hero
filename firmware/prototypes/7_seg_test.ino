@@ -8,9 +8,9 @@ It makes use of 2 74HC595 shift registers daisy chained together to
 */
 
 // Pin Definitions
-const int dataPin = 2;   
-const int latchPin = 3;  
-const int clockPin = 4; 
+const int DATA_PIN = 2;   
+const int LATCH_PIN = 3;  
+const int CLOCK_PIN = 4; 
 
 byte digitMap[] = {
     0b00111111, // 0
@@ -26,9 +26,9 @@ byte digitMap[] = {
 };
 
 void setup() {
-    pinMode(dataPin, OUTPUT);
-    pinMode(latchPin, OUTPUT);
-    pinMode(clockPin, OUTPUT);
+    pinMode(DATA_PIN, OUTPUT);
+    pinMode(LATCH_PIN, OUTPUT);
+    pinMode(CLOCK_PIN, OUTPUT);
 }
 
 void loop() {
@@ -51,17 +51,17 @@ void displayNumber(int num) {
     int tens = num / 10; // split number into 2 numbers
     int ones = num % 10;
 
-    digitalWrite(latchPin, LOW); // prepare to send data (prevent flickering)
+    digitalWrite(LATCH_PIN, LOW); // prepare to send data (prevent flickering)
     
-    shiftOut(dataPin, clockPin, MSBFIRST, digitMap[ones]); // Goes to Reg B
-    shiftOut(dataPin, clockPin, MSBFIRST, digitMap[tens]); // Goes to Reg A
+    shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, digitMap[ones]); // Goes to Reg B
+    shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, digitMap[tens]); // Goes to Reg A
 
-    digitalWrite(latchPin, HIGH); // Latch data to outputs
+    digitalWrite(LATCH_PIN, HIGH); // Latch data to outputs
 }
 
 void clearDisplay() {
-    digitalWrite(latchPin, LOW);
-    shiftOut(dataPin, clockPin, MSBFIRST, 0b00000000);
-    shiftOut(dataPin, clockPin, MSBFIRST, 0b00000000);
-    digitalWrite(latchPin, HIGH);
+    digitalWrite(LATCH_PIN, LOW);
+    shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, 0b00000000);
+    shiftOut(DATA_PIN, CLOCK_PIN, MSBFIRST, 0b00000000);
+    digitalWrite(LATCH_PIN, HIGH);
 }

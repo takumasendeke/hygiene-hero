@@ -2,7 +2,7 @@
 Takudzwa Masendeke
 
 This code is part of the hygiene-hero embedded systems project. 
-It is used to give display a singular animatio (2 frames) of the 
+It is used to give display a singular animatio (2 FRAMES) of the 
 main motions in the project
 
 It makes use of the U8g2lib and a 128x64 LCD Display and solves
@@ -14,12 +14,12 @@ the memory and display animation quality problems
 
 U8G2_ST7920_128X64_F_SW_SPI auxScreen(U8G2_R0, 13, 11, 10, U8X8_PIN_NONE); // specifiy exact LCD display and drivers using software SPI
 
-const uint8_t frames = 2;
-const uint16_t sizeBytes = 1024;
+const uint8_t FRAMES = 2;
+const uint16_t SIZE_BYTES = 1024;
 
 // Store bitmap in FLASH, not RAM
-// 2 frames of size 1024 = 2048 will finish SRAM (2kB), store in flash memory with sketch to save RAM 
-const uint8_t PROGMEM icon[frames][sizeBytes] = {
+// 2 FRAMES of size 1024 = 2048 will finish SRAM (2kB), store in flash memory with sketch to save RAM 
+const uint8_t PROGMEM icon[FRAMES][SIZE_BYTES] = {
   {
       0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -202,7 +202,7 @@ const uint8_t PROGMEM icon[frames][sizeBytes] = {
 
 void playAnime(uint8_t width, uint8_t height, uint16_t fDelay) {
   while (true) {
-    for (uint8_t i = 0; i < frames; i++) {
+    for (uint8_t i = 0; i < FRAMES; i++) {
       delay(fDelay); // wait on current frame
       
       auxScreen.clearBuffer(); // clear memory to prevent overlap 
