@@ -4,7 +4,7 @@
 Welcome to the official repository for **Hygiene Hero**, an interactive, behavior-driven embedded system designed to guide users through a proper 20-second handwashing routine recommended by WHO.
 
 ## Overview
-Hand hygiene is a critical aspect of public health, yet global compliance rates remain incredibly low, with the average wash time sitting at just 6 seconds. Built as an open-source Electrical and Computer Engineering project at the University of Cape Town, Hygiene Hero tackles this behavioral shortfall. It utilizes multi-sensory feedback—including a visual countdown, animated graphics, and audio cues—to encourage longer, proper handwashing and make the process engaging.
+Hand hygiene is a critical aspect of public health, yet global compliance rates remain incredibly low, with the average wash time sitting at just 6 seconds. Built as an open-source Electrical and Computer Engineering project at the University of Cape Town, Hygiene Hero tackles this behavioral shortfall. It utilizes multi-sensory feedback—including a visual countdown, animated graphics, and audio cues to encourage longer, proper handwashing and make the process engaging.
 
 ## Key Features
 * **Touchless Activation:** Uses HC-SR04 ultrasonic sensors to monitor hand presence. 
