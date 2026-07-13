@@ -10,15 +10,15 @@ no triggers were used because a physical clock in the form of a
 */
 
 // Echo pins
-const int echoSoapPin = 2;
-const int echoWaterPin = 3;
+const int ECHO_SOAP_PIN = 2;
+const int ECHO_WATER_PIN = 3;
 
 // setup
 void setup() {
     Serial.begin(9600);
 
-    pinMode(echoSoapPin,INPUT);
-    pinMode(echoWaterPin,INPUT);
+    pinMode(ECHO_SOAP_PIN,INPUT);
+    pinMode(ECHO_WATER_PIN,INPUT);
 
     Serial.println("Good to go ...");
 } 
@@ -28,7 +28,7 @@ void loop() {
     const float SPEED_OF_SOUND_IN_AIR = 0.0343; // (cm/µs) assuming dry room at 20°C
 
     // Soap Sensor
-    unsigned long durationSoap = pulseIn (echoSoapPin, HIGH, 120000); // timeout of 120ms 
+    unsigned long durationSoap = pulseIn (ECHO_SOAP_PIN, HIGH, 120000); // timeout of 120ms 
     float soapDistance = -1; // sentinel value
 
     if (durationSoap != 0 ){
@@ -36,7 +36,7 @@ void loop() {
     }
 
     // water sensor 
-    unsigned long durationWater = pulseIn (echoWaterPin, HIGH, 120000); // timeout of 120ms 
+    unsigned long durationWater = pulseIn (ECHO_WATER_PIN, HIGH, 120000); // timeout of 120ms 
     float waterDistance = -1;
 
     if (durationWater != 0 ){
