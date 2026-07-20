@@ -10,7 +10,10 @@
 class ShiftDisplay {
   private:
     uint8_t _latch, _clock, _data;
-    const byte _digits[11] = { 0x7E, 0x0C, 0xB6, 0x9E, 0xCC, 0xDA, 0xFA, 0x0E, 0xFE, 0xDE, 0x00 };
+    
+    // UPDATED: Hex values recalculated for [A, G, F, E, D, C, B, DP] wiring
+    const byte _digits[11] = { 0xBE, 0x06, 0xDA, 0xCE, 0x66, 0xEC, 0xFC, 0x86, 0xFE, 0xEE, 0x00 };
+    
   public:
     ShiftDisplay(uint8_t latch, uint8_t clock, uint8_t data);
     void begin();
